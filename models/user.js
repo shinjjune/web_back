@@ -3,19 +3,26 @@ const Joi = require("@hapi/joi");
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
+  id: String,
   name: String,
-  email: { type: String, unique: true },
   password: String,
-  admin: { type: Boolean, default: false }
+  company_no: String,
+  company_name: String,
+  company_Location: String,
+  phoneNumber: String
 });
 
 const User = model("User", userSchema);
 
 function validateUser(user) {
   const schema = Joi.object({
+    id: Joi.string(),
     name: Joi.string(),
-    email: Joi.string().email(),
-    password: Joi.string()
+    password: Joi.string(),
+    company_no: Joi.string(),
+    company_name: Joi.string(),
+    company_Location: Joi.string(),
+    phoneNumber: Joi.string()
   });
   return schema.validate(user);
 }
