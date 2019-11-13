@@ -6,14 +6,14 @@ const { User, validateUser } = require("../models/user");
 const { jwtSecret } = require("../common/jwt_config");
 
 // 회원가입
-router.post("/stamp/join", async (req, res, next) => {
+router.post("/join", async (req, res, next) => {
   const {
     id,
     password,
     name,
     company_no,
     company_name,
-    company_Loaction,
+    company_Location,
     phoneNumber
   } = req.body;
   if (validateUser(req.body).error) {
@@ -30,7 +30,7 @@ router.post("/stamp/join", async (req, res, next) => {
     password: hashedPW,
     company_no,
     company_name,
-    company_Loaction,
+    company_Location,
     phoneNumber
   });
   const saveResult = await user.save(); // db에 저장
@@ -58,7 +58,7 @@ router.post("/stamp/login", async (req, res, next) => {
         admin: user.admin
       },
       jwtSecret,
-      { expiresIn: "1m" }
+      { expiresIn: "1h" }
     );
     res.json({ result: true, token, admin: user.admin });
     next();
