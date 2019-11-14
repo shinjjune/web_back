@@ -55,4 +55,23 @@ recaptcha 를 이용한 무분별한 로그인공격 방지
 
 ### API 문서
 
+| 구분     | URL            | Method | parameter                                                    | response                                                     |
+| -------- | -------------- | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 회원가입 | /stamp/join    | post   | id, password,name,company_no,company_name, companyLocation, phoneNumber | result(B)                                                    |
+| 로그인   | /stamp/login   | post   | id, password                                                 | result(B),admin(B),ticket                                    |
+| 광고등록 | /stamp/mission | post   | user_id,title,missionUser,Num,content,tag,startDate,endDate,survey1,survey2,survey3,imageUpLoad,category,ticket | ticket                                                       |
+| 광고관리 | /stamp/board   | get    | id,token,ticket                                              | user_id, title, missionUserNum, content, tag, startDate, endDate, survey1,survey2,survey3,imageUpLoad |
+| 회원탈퇴 | /stamp/secede  | delete | id, password, name, company_no, company_name                 |                                                              |
+| 회원수정 | /stamp/modify  | patch  | id, password, name, company_no, company_name                 |                                                              |
+| 티켓충전 | /stamp/ticket  | post   | id, charge, method                                           |                                                              |
 
+### DB
+
+- users
+  - id 
+  - password
+  - name
+  - company_no
+  - company_name
+  - companyLocation
+  - phoneNumber
