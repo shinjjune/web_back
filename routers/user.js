@@ -4,6 +4,17 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const { User, validateUser } = require("../models/user");
 const { jwtSecret } = require("../common/jwt_config");
+const wrapper = require("../common/wrapper");
+
+// 회원보기
+router.get(
+  "/user_check",
+  wrapper(async (req, res, next) => {
+    const users = await User.find();
+    res.json({ users });
+    next();
+  })
+);
 
 // 회원가입
 router.post("/join", async (req, res, next) => {
@@ -39,7 +50,7 @@ router.post("/join", async (req, res, next) => {
 });
 
 // 로그인
-router.post("/stamp/login", async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   const { id, password } = req.body;
   const user = await User.findOne({ id: id });
   if (!user) {
@@ -53,14 +64,12 @@ router.post("/stamp/login", async (req, res, next) => {
     const token = jwt.sign(
       {
         id: user._id,
-        name: user.name,
-        email: user.email,
-        admin: user.admin
+        password: user.password
       },
       jwtSecret,
       { expiresIn: "1h" }
     );
-    res.json({ result: true, token, admin: user.admin });
+    res.json({ result: true, token });
     next();
   } else {
     res.json({ result: false });

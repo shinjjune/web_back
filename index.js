@@ -24,6 +24,7 @@ app.use(auth.initialize());
 app.use(express.json());
 app.use("/auth", user);
 app.use("/stamp", user);
+app.use("/advertise", advertise);
 // app.use("/stamp/join", join);
 // app.use("/stamp/login", login);
 app.use(() => mongoose.disconnect());
