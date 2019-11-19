@@ -6,9 +6,9 @@ const advertiseSchema = new Schema({
   id: { type: mongoose.Types.ObjectId, ref: "User" },
   title: String,
   missionUser: String,
-  num: { type: Number },
+  num: Number,
   content: String,
-  tag: String,
+  url: String,
   startDate: Date,
   endDate: Date,
   survey1: String,
@@ -28,10 +28,9 @@ function validateAdver(advertise) {
     missionUser: Joi.string(),
     num: Joi.number()
       .integer()
-      .min(0)
       .max(55),
     content: Joi.string(),
-    tag: Joi.string(),
+    url: Joi.string(),
     startDate: Joi.date(),
     endDate: Joi.date(),
     survey1: Joi.string(),
@@ -41,7 +40,6 @@ function validateAdver(advertise) {
     category: Joi.string(),
     ticket: Joi.number()
       .integer()
-      .min(0)
       .max(55)
   });
   return schema.validate(advertise);

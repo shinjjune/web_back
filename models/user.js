@@ -9,7 +9,7 @@ const userSchema = new Schema({
   company_no: String,
   company_name: String,
   company_Location: String,
-  phoneNumber: String
+  phoneNumber: Number
 });
 
 const User = model("User", userSchema);
@@ -22,7 +22,7 @@ function validateUser(user) {
     company_no: Joi.string(),
     company_name: Joi.string(),
     company_Location: Joi.string(),
-    phoneNumber: Joi.string()
+    phoneNumber: Joi.number()
   });
   return schema.validate(user);
 }
