@@ -27,8 +27,6 @@ app.use(express.json());
 app.use("/auth", user);
 app.use("/stamp", user);
 app.use("/advertise", advertise);
-// app.use("/stamp/join", join);
-// app.use("/stamp/login", login);
 app.use(() => mongoose.disconnect());
 
 const PORT = process.env.PORT || 3000;
