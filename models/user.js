@@ -9,7 +9,8 @@ const userSchema = new Schema({
   company_no: String,
   company_name: String,
   company_Location: String,
-  phoneNumber: Number
+  phoneNumber: Number,
+  admin: { type: Boolean, default: false }
 });
 
 const User = model("User", userSchema);

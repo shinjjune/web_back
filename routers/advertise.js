@@ -3,6 +3,23 @@ const router = express.Router();
 const { Advertise, validateAdver } = require("../models/advertise");
 const wrapper = require("../common/wrapper");
 
+router.get(
+  "/",
+  wrapper(async (req, res, next) => {
+    const { page = "1" } = req.query;
+    const skip = parseInt(page) * 5 - 5;
+    {
+      const advertises = await Advertise.find()
+        .limit(5)
+        .skip(skip)
+        // .sort("-date")
+        .populate("name");
+      res.json({ advertises });
+    }
+    next();
+  })
+);
+
 // 광고등록
 router.post(
   "/mission",

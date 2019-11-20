@@ -6,9 +6,11 @@ const user = require("./routers/user");
 const advertise = require("./routers/advertise");
 const config = require("./common/jwt_config");
 const auth = require("./common/auth")();
+const cors = require("cors");
 
 const dbURI = process.env.MONGODB_URI || "mongodb://localhost/stamp-test";
 app.use(Helmet());
+app.use(cors());
 app.use((req, res, next) => {
   mongoose
     .connect(dbURI, {
