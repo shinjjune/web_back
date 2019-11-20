@@ -26,7 +26,7 @@ router.post(
       name,
       company_no,
       company_name,
-      company_Location,
+      company_location,
       phoneNumber
     } = req.body;
     if (validateUser(req.body).error) {
@@ -43,7 +43,7 @@ router.post(
       password: hashedPW,
       company_no,
       company_name,
-      company_Location,
+      company_location,
       phoneNumber
     });
     const saveResult = await user.save(); // db에 저장

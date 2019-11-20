@@ -4,13 +4,13 @@ const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
   id: String,
-  name: String,
   password: String,
+  name: String,
   company_no: String,
   company_name: String,
-  company_Location: String,
+  company_location: String,
   phoneNumber: Number,
-  admin: { type: Boolean, default: false }
+  admin: { type: Boolean, default: true }
 });
 
 const User = model("User", userSchema);
@@ -18,11 +18,11 @@ const User = model("User", userSchema);
 function validateUser(user) {
   const schema = Joi.object({
     id: Joi.string(),
-    name: Joi.string(),
     password: Joi.string(),
+    name: Joi.string(),
     company_no: Joi.string(),
     company_name: Joi.string(),
-    company_Location: Joi.string(),
+    company_location: Joi.string(),
     phoneNumber: Joi.number()
   });
   return schema.validate(user);
