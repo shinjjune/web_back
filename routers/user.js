@@ -22,12 +22,12 @@ router.post(
   wrapper(async (req, res, next) => {
     const {
       id,
-      password,
-      name,
-      company_no,
-      company_name,
-      company_Location,
-      phoneNumber
+      password
+      // name,
+      // company_no,
+      // company_name,
+      // company_Location,
+      // phoneNumber
     } = req.body;
     if (validateUser(req.body).error) {
       // 검증과정 통과 못하면
@@ -39,12 +39,12 @@ router.post(
     const hashedPW = await bcrypt.hash(password, saltRound);
     const user = new User({
       id,
-      name,
-      password: hashedPW,
-      company_no,
-      company_name,
-      company_Location,
-      phoneNumber
+      password
+      // name,
+      // company_no,
+      // company_name,
+      // company_Location,
+      // phoneNumber
     });
     const saveResult = await user.save(); // db에 저장
     res.json({ result: true });
