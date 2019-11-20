@@ -27,7 +27,7 @@ router.post(
       company_no,
       company_name,
       company_location,
-      phoneNumber
+      phonenumber
     } = req.body;
     if (validateUser(req.body).error) {
       // 검증과정 통과 못하면
@@ -44,7 +44,7 @@ router.post(
       company_no,
       company_name,
       company_location,
-      phoneNumber
+      phonenumber
     });
     const saveResult = await user.save(); // db에 저장
     res.json({ result: true });
