@@ -39,8 +39,8 @@ router.post(
     const hashedPW = await bcrypt.hash(password, saltRound);
     const user = new User({
       id,
-      name,
       password: hashedPW,
+      name,
       company_no,
       company_name,
       company_location,
