@@ -10,8 +10,13 @@ const wrapper = require("../common/wrapper");
 router.get(
   "/user_check",
   wrapper(async (req, res, next) => {
-    const users = await User.find();
-    res.json({ users });
+    const id = req.query.id;
+    const user = await User.findOne({ id });
+    if (user) {
+      res.json({ result: false });
+    } else {
+      res.json({ result: true });
+    }
     next();
   })
 );
