@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 });
 app.use(auth.initialize());
 app.use(express.json());
+app.use("/auth", user);
 app.use("/stamp", user);
 app.use("/advertise", advertise);
 app.use(() => mongoose.disconnect());
