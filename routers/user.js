@@ -88,12 +88,13 @@ router.post(
         result: true,
         token,
         id,
-        name,
-        company_no,
-        company_name,
-        company_location,
-        phonenumber,
-        admin: user.admin
+        password
+        // name,
+        // company_no,
+        // company_name,
+        // company_location,
+        // phonenumber,
+        // admin: user.admin
       });
       next();
     } else {

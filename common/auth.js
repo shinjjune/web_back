@@ -14,8 +14,7 @@ module.exports = () => {
     const user = await User.findById(payload.id);
     if (user) {
       return done(null, {
-        id: user._id,
-        email: user.email,
+        id: user.id,
         name: user.name,
         admin: user.admin
       });

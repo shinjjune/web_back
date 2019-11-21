@@ -23,7 +23,7 @@ function validateUser(user) {
     company_no: Joi.string(),
     company_name: Joi.string(),
     company_location: Joi.string(),
-    phonenumber: Joi.String()
+    phonenumber: Joi.string()
   });
   return schema.validate(user);
 }
