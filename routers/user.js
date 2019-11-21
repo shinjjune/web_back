@@ -78,13 +78,23 @@ router.post(
           name: user.name,
           company_no: user.company_no,
           company_name: user.company_name,
-          company_location:user.company_location,
-          phonenumber:user.phonenumber
+          company_location: user.company_location,
+          phonenumber: user.phonenumber
         },
         jwtSecret,
         { expiresIn: "1h" }
       );
-      res.json({ result: true, token });
+      res.json({
+        result: true,
+        token,
+        id,
+        name,
+        company_no,
+        company_name,
+        company_location,
+        phonenumber,
+        admin: user.admin
+      });
       next();
     } else {
       res.json({ result: false });
