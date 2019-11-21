@@ -21,6 +21,14 @@ router.get(
   })
 );
 
+// 체크
+router.get(
+  "/check",
+  wrapper(async (req, res, next) => {
+    const id = req.query.id;
+  })
+);
+
 // 회원가입
 router.post(
   "/join",
