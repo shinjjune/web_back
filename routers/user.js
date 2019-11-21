@@ -11,8 +11,8 @@ router.get(
   "/user_check",
   wrapper(async (req, res, next) => {
     const id = req.query.id;
-    const users = await User.findOne({ id });
-    if (users) {
+    const user = await User.findOne({ id });
+    if (user) {
       res.json({ result: false });
     } else {
       res.json({ result: true });
