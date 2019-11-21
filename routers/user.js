@@ -25,9 +25,12 @@ router.get(
 router.get(
   "/check",
   wrapper(async (req, res, next) => {
-    const id = req.query.id;
+    const users = await User.find();
+    res.json({ users });
+    next()
   })
 );
+
 
 // 회원가입
 router.post(
