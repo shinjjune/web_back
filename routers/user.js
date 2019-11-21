@@ -74,7 +74,12 @@ router.post(
       const token = jwt.sign(
         {
           id: user._id,
-          password: user.password
+          password: user.password,
+          name: user.name,
+          company_no: user.company_no,
+          company_name: user.company_name,
+          company_location:user.company_location,
+          phonenumber:user.phonenumber
         },
         jwtSecret,
         { expiresIn: "1h" }
