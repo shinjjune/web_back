@@ -72,6 +72,7 @@ router.get(
   "/mission_check",
   wrapper(async (req, res, next) => {
     const advertises = await Advertise.find();
+    advertise.views++;
     res.json({ advertises });
     next();
   })

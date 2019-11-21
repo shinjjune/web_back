@@ -16,7 +16,8 @@ const advertiseSchema = new Schema({
   survey3: String,
   imageUpLoad: String,
   category: String,
-  ticket: Number
+  ticket: Number,
+  views: { type: Number, default: 0 }
 });
 
 const Advertise = model("Advertise", advertiseSchema);
