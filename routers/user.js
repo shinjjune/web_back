@@ -119,6 +119,7 @@ router.post(
         ticket
         // admin: user.admin
       });
+      console.log(ticket);
       next();
     } else {
       res.json({ result: false });
