@@ -110,6 +110,7 @@ router.post(
         // admin: user.admin
       });
       next();
+      console.log("hello");
     } else {
       res.json({ result: false });
       next();
