@@ -27,10 +27,9 @@ router.get(
   wrapper(async (req, res, next) => {
     const users = await User.find();
     res.json({ users });
-    next()
+    next();
   })
 );
-
 
 // 회원가입
 router.post(
@@ -90,7 +89,8 @@ router.post(
           company_no: user.company_no,
           company_name: user.company_name,
           company_location: user.company_location,
-          phonenumber: user.phonenumber
+          phonenumber: user.phonenumber,
+          ticket: user.ticket
         },
         jwtSecret,
         { expiresIn: "1h" }
