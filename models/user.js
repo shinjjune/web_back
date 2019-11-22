@@ -24,8 +24,8 @@ function validateUser(user) {
     company_no: Joi.string(),
     company_name: Joi.string(),
     company_location: Joi.string(),
-    phonenumber: Joi.string()
-    // ticket: Joi.number()
+    phonenumber: Joi.string(),
+    ticket: Joi.number()
   });
   return schema.validate(user);
 }
