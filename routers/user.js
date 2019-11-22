@@ -84,6 +84,7 @@ router.post(
       phonenumber
     } = req.body;
     const user = await User.findOne({ id: id });
+    res.json(tikcet);
     if (!user) {
       res.json({ result: false });
       next();
