@@ -85,7 +85,7 @@ router.post(
       // 토큰을 만들어 줍시다!
       const token = jwt.sign(
         {
-          id: user._id,
+          id: user.id,
           password: user.password,
           name: user.name,
           company_no: user.company_no,
