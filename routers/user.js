@@ -73,7 +73,16 @@ router.post(
 router.post(
   "/login",
   wrapper(async (req, res, next) => {
-    const { id, password, ticket } = req.body;
+    const {
+      id,
+      password,
+      ticket,
+      name,
+      company_no,
+      company_name,
+      company_location,
+      phonenumber
+    } = req.body;
     const user = await User.findOne({ id: id });
     if (!user) {
       res.json({ result: false });
@@ -102,12 +111,12 @@ router.post(
         token,
         id,
         password,
-        ticket
-        // name,
-        // company_no,
-        // company_name,
-        // company_location,
-        // phonenumber,
+        ticket,
+        name,
+        company_no,
+        company_name,
+        company_location,
+        phonenumber
         // admin: user.admin
       });
       next();
