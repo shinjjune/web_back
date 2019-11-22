@@ -16,6 +16,8 @@ router.get(
         .populate("name");
       res.json({ advertises });
     }
+    const advertises = {},
+      update = { $inc: { views: 1 } };
     next();
   })
 );
