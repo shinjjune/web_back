@@ -101,8 +101,7 @@ router.post(
         result: true,
         token,
         id,
-        password,
-        ticket
+        password
         // name,
         // company_no,
         // company_name,
