@@ -84,7 +84,6 @@ router.post(
       phonenumber
     } = req.body;
     const user = await User.findOne({ id: id });
-    res.json(tikcet);
     if (!user) {
       res.json({ result: false });
       next();
@@ -120,7 +119,6 @@ router.post(
         ticket
         // admin: user.admin
       });
-      console.log(ticket);
       next();
     } else {
       res.json({ result: false });
