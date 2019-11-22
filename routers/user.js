@@ -111,12 +111,12 @@ router.post(
         token,
         id,
         password,
-        ticket,
         name,
         company_no,
         company_name,
         company_location,
-        phonenumber
+        phonenumber,
+        ticket
         // admin: user.admin
       });
       next();
