@@ -25,6 +25,7 @@ router.get(
 router.get(
   "/check",
   wrapper(async (req, res, next) => {
+    const id = req.query.id;
     const users = await User.findOne({ id });
     res.json({ users });
     next();
