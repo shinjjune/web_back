@@ -16,8 +16,8 @@ router.get(
         .populate("name");
       res.json({ advertises });
     }
-    const advertises = {},
-      update = { $inc: { views: 1 } };
+    // const advertises = {},
+    //   update = { $inc: { views: 1 } };
     next();
   })
 );
@@ -27,20 +27,13 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
-      id,
       title,
-      missionUser,
-      num,
+      totalNumber,
+      currentNumber,
       content,
-      url,
+      survey,
       startDate,
-      endDate,
-      survey1,
-      survey2,
-      survey3,
-      imageUpLoad,
-      category,
-      ticket
+      endDate
     } = req.body;
     if (validateAdver(req.body).error) {
       // 검증과정 통과 못하면
@@ -49,20 +42,13 @@ router.post(
       return;
     }
     const advertise = new Advertise({
-      id,
       title,
-      missionUser,
-      num,
+      totalNumber,
+      currentNumber,
       content,
-      url,
+      survey,
       startDate,
-      endDate,
-      survey1,
-      survey2,
-      survey3,
-      imageUpLoad,
-      category,
-      ticket
+      endDate
     });
     const saveResult = await advertise.save(); // db에 저장
     res.json({ result: true });
@@ -74,7 +60,7 @@ router.get(
   "/mission_check",
   wrapper(async (req, res, next) => {
     const advertises = await Advertise.find();
-    advertise.views++;
+    // advertise.views++;
     advertise.save();
     res.json({ advertises });
     next();

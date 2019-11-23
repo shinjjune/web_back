@@ -5,19 +5,13 @@ const { Schema, model } = mongoose;
 const advertiseSchema = new Schema({
   id: { type: mongoose.Types.ObjectId, ref: "User" },
   title: String,
-  missionUser: String,
-  num: Number,
+  totalNumber: String,
+  currentNumber: String,
   content: String,
-  url: String,
+  survey: String,
   startDate: Date,
-  endDate: Date,
-  survey1: String,
-  survey2: String,
-  survey3: String,
-  imageUpLoad: String,
-  category: String,
-  ticket: Number,
-  views: { type: Number, default: 0 }
+  endDate: Date
+  // views: { type: Number, default: 0 }
 });
 
 const Advertise = model("Advertise", advertiseSchema);
@@ -26,22 +20,14 @@ function validateAdver(advertise) {
   const schema = Joi.object({
     id: Joi.string(),
     title: Joi.string(),
-    missionUser: Joi.string(),
-    num: Joi.number()
+    totalNumber: Joi.number(),
+    currentNumber: Joi.number()
       .integer()
       .max(55),
     content: Joi.string(),
-    url: Joi.string(),
+    survey: Joi.string(),
     startDate: Joi.date(),
-    endDate: Joi.date(),
-    survey1: Joi.string(),
-    survey2: Joi.string(),
-    survey3: Joi.string(),
-    imageUpLoad: Joi.string(),
-    category: Joi.string(),
-    ticket: Joi.number()
-      .integer()
-      .max(55)
+    endDate: Joi.date()
   });
   return schema.validate(advertise);
 }
