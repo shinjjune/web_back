@@ -10,7 +10,6 @@ router.get(
     const skip = parseInt(page) * 5 - 5;
     {
       const advertises = await Advertise.find()
-        .limit(5)
         .skip(skip)
         // .sort("-date")
         .populate("name");
@@ -27,14 +26,14 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
-      // id,
+      id,
       title,
-      // totalNumber,
-      // currentNumber,
+      totalNumber,
+      currentNumber,
       content,
-      survey
-      // startDate,
-      // endDate
+      survey,
+      startDate,
+      endDate
     } = req.body;
     if (validateAdver(req.body).error) {
       // 검증과정 통과 못하면
@@ -43,14 +42,14 @@ router.post(
       return;
     }
     const advertise = new Advertise({
-      // id,
+      id,
       title,
-      // totalNumber,
-      // currentNumber,
+      totalNumber,
+      currentNumber,
       content,
-      survey
-      // startDate,
-      // endDate
+      survey,
+      startDate,
+      endDate
     });
     const saveResult = await advertise.save(); // db에 저장
     res.json({ result: true });
