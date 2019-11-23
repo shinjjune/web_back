@@ -43,14 +43,14 @@ router.post(
       return;
     }
     const advertise = new Advertise({
-      id,
+      // id,
       title,
-      totalNumber,
-      currentNumber,
+      // totalNumber,
+      // currentNumber,
       content,
-      survey,
-      startDate,
-      endDate
+      survey
+      // startDate,
+      // endDate
     });
     const saveResult = await advertise.save(); // db에 저장
     res.json({ result: true });
