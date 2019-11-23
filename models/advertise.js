@@ -10,8 +10,8 @@ const advertiseSchema = new Schema({
   content: String,
   survey: String,
   startDate: Date,
-  endDate: Date
-  // views: { type: Number, default: 0 }
+  endDate: Date,
+  views: { type: Number, default: 0 }
 });
 
 const Advertise = model("Advertise", advertiseSchema);
