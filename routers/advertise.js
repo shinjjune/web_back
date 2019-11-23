@@ -27,14 +27,14 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
-      id,
+      // id,
       title,
-      totalNumber,
-      currentNumber,
+      // totalNumber,
+      // currentNumber,
       content,
-      survey,
-      startDate,
-      endDate
+      survey
+      // startDate,
+      // endDate
     } = req.body;
     if (validateAdver(req.body).error) {
       // 검증과정 통과 못하면

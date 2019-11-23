@@ -6,7 +6,7 @@ const advertiseSchema = new Schema({
   id: { type: mongoose.Types.ObjectId, ref: "User" },
   title: String,
   totalNumber: String,
-  currentNumber: String,
+  currentNumber: { type: Number, default: 0 },
   content: String,
   survey: String,
   startDate: Date,
