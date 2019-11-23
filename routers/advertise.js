@@ -27,6 +27,7 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
+      id,
       title,
       totalNumber,
       currentNumber,
@@ -42,6 +43,7 @@ router.post(
       return;
     }
     const advertise = new Advertise({
+      id,
       title,
       totalNumber,
       currentNumber,
