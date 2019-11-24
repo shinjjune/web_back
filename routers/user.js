@@ -91,6 +91,7 @@ router.post(
     }
     const result = await bcrypt.compare(password, user.password);
     if (result) {
+      console.log(result);
       // 토큰을 만들어 줍시다!
       const token = jwt.sign(
         {
