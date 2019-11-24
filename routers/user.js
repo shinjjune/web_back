@@ -83,7 +83,7 @@ router.post(
       company_location,
       phonenumber
     } = req.body;
-    const user = await User.findOne({ id: id, ticket: ticket });
+    const user = await User.findOne({ id: id });
     if (!user) {
       res.json({ result: false });
       next();
