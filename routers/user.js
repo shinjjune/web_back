@@ -109,9 +109,9 @@ router.post(
       );
       res.json({
         result: true,
+        token,
         id,
         password,
-        token,
         name,
         company_no,
         company_name,
