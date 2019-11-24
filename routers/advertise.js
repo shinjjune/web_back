@@ -26,10 +26,10 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
-      id,
+      // id,
       title,
       totalNumber,
-      currentNumber,
+      // currentNumber,
       content,
       survey,
       startDate,
@@ -42,10 +42,10 @@ router.post(
       return;
     }
     const advertise = new Advertise({
-      id,
+      // id,
       title,
       totalNumber,
-      currentNumber,
+      // currentNumber,
       content,
       survey,
       startDate,
