@@ -117,7 +117,7 @@ router.post(
         company_name,
         company_location,
         phonenumber,
-        ticket
+        ticket: user.ticket
         // admin: user.admin
       });
       next();
