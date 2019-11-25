@@ -60,6 +60,7 @@ router.post(
       endDate
     });
     const saveResult = await advertise.save(); // db에 저장
+    console.log(saveResult);
     res.json({ result: true });
     next();
   })
@@ -69,6 +70,7 @@ router.get(
   "/mission_check",
   wrapper(async (req, res, next) => {
     const web_userId = req.query.id;
+    console.log(web_userId);
     const WEB_USER = await User.find({ id: web_userId });
 
     const advertises = await Advertise.find({ id: WEB_USER._id });
