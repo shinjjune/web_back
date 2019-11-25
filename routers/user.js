@@ -142,10 +142,10 @@ router.patch(
       { _id: req.parmas.id },
       {
         $set: {
-          password: req.body.password,
-          phonenumber: req.body.phonenumber,
-          company_name: req.body.company_name,
-          company_location: req.body.company_location
+          password,
+          phonenumber,
+          company_name,
+          company_location
         }
       }
     );
