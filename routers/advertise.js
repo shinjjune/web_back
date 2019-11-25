@@ -62,7 +62,7 @@ router.get(
   wrapper(async (req, res, next) => {
     const advertises = await Advertise.find();
     // advertise.views++;
-    advertise.save();
+    // advertise.save();
     res.json({ advertises });
     next();
   })
