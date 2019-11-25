@@ -128,7 +128,7 @@ router.post(
 );
 // 회원수정
 router.patch(
-  "/user",
+  "/:id",
   // auth.authenticate(),
   async (req, res, next) => {
     await user.updateMany(
