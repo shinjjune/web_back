@@ -129,7 +129,7 @@ router.post(
 // 회원수정
 router.patch(
   "/:id",
-  auth.authenticate(),
+  // auth.authenticate(),
   wrapper(async (req, res, next) => {
     await user.updateOne({ _id: req.params.id }, req.body);
     res.json({ result: true });
@@ -139,7 +139,7 @@ router.patch(
 // 회원삭제
 router.delete(
   "/:id",
-  auth.authenticate(),
+  // auth.authenticate(),
   wrapper(async (req, res, next) => {
     await user.deleteOne({ _id: req.parmas.id });
     res.json({ result: true });
