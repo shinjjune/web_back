@@ -46,7 +46,7 @@ router.post(
     };
 
     const user = await User.find({ id: web_user_id })
-    console.log(user);
+    console.log(user._id);
     const advertise = new Advertise({
       id: user._id,  // web_user address
       title,
