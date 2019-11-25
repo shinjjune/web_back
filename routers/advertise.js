@@ -64,7 +64,7 @@ router.post(
 router.get(
   "/mission_check",
   wrapper(async (req, res, next) => {
-    const advertises = await Advertise.find({ _id: req.params.id });
+    const advertises = await Advertise.find();
     // advertise.views++;
     // advertise.save();
     res.json({ advertises });
