@@ -10,6 +10,7 @@ const advertiseSchema = new Schema({
   currentNumber: { type: Number, default: 0 },
   content: String,
   survey: String,
+  date: { type: Date, default: Date.now },
   startDate: Date,
   endDate: Date,
   views: { type: Number, default: 0 }
@@ -28,6 +29,7 @@ function validateAdver(advertise) {
       .max(55),
     content: Joi.string(),
     survey: Joi.string(),
+    date: Joi.date(),
     startDate: Joi.date(),
     endDate: Joi.date()
   });
