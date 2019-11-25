@@ -5,7 +5,6 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
   id: String,
   password: String,
-  password2: String,
   name: String,
   company_no: String,
   company_name: String,
@@ -21,7 +20,6 @@ function validateUser(user) {
   const schema = Joi.object({
     id: Joi.string(),
     password: Joi.string(),
-    password2: Joi.string(),
     name: Joi.string(),
     company_no: Joi.string(),
     company_name: Joi.string(),

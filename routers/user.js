@@ -48,7 +48,6 @@ router.post(
     const {
       id,
       password,
-      password2,
       name,
       company_no,
       company_name,
@@ -67,7 +66,6 @@ router.post(
     const user = new User({
       id,
       password: hashedPW,
-      password2: hashedPW,
       name,
       company_no,
       company_name,
@@ -88,7 +86,6 @@ router.post(
     const {
       id,
       password,
-      password2,
       ticket,
       name,
       company_no,
@@ -109,7 +106,6 @@ router.post(
         {
           id: user._id,
           password: user.password,
-          password2: user.password2,
           name: user.name,
           company_no: user.company_no,
           company_name: user.company_name,
@@ -125,7 +121,6 @@ router.post(
         token,
         id,
         password,
-        password2,
         name,
         company_no,
         company_name,
@@ -146,7 +141,7 @@ router.post(
 router.post(
   "/passwordsame",
   wrapper(async (req, res, next) => {
-    const { password2 } = req.body;
+    const { password } = req.body;
     if (validateAdver(req.body).error) {
       // 검증과정 통과 못하면
       res.status(400).json({ result: false });
@@ -154,7 +149,7 @@ router.post(
       return;
     }
     const user = new User({
-      password2
+      password
     });
     const saveUser = await user.save(); // db에 저장
     console.log(saveUser);
