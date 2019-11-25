@@ -132,7 +132,7 @@ router.patch(
   // auth.authenticate(),
   wrapper(async (req, res, next) => {
     await user.updateMany(
-      { _id: req.params.id },
+      { id: req.params.id },
       {
         $set: {
           password: password,
