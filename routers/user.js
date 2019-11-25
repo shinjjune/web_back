@@ -131,7 +131,7 @@ router.patch(
   "/user",
   // auth.authenticate(),
   wrapper(async (req, res, next) => {
-    const { password, phonenumber, company_name, company_location } = req.body;
+    const { password, company_name, company_location,phonenumber, } = req.body;
     if (validateUser(req.body).error) {
       // 검증과정 통과 못하면
       res.status(400).json({ result: false });
@@ -143,9 +143,9 @@ router.patch(
       {
         $set: {
           password,
-          phonenumber,
           company_name,
           company_location
+          phonenumber,
         }
       }
     );
