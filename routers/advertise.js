@@ -33,6 +33,7 @@ router.post(
       // currentNumber,
       content,
       survey,
+      date,
       startDate,
       endDate
     } = req.body;
@@ -50,6 +51,7 @@ router.post(
       // currentNumber,
       content,
       survey,
+      date,
       startDate,
       endDate
     });
