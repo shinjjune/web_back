@@ -128,7 +128,7 @@ router.post(
 );
 // 회원수정
 router.patch(
-  "/user",
+  "/:id",
   // auth.authenticate(),
   wrapper(async (req, res, next) => {
     const { password, company_name, company_location, phonenumber } = req.body;
