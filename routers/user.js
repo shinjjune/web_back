@@ -152,7 +152,7 @@ router.post(
       password
     });
     const saveUser = await user.save(); // db에 저장
-    console.log(saveuser);
+    console.log(saveUser);
     res.json({ result: true });
     next();
   })
