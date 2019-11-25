@@ -132,7 +132,7 @@ router.post(
   "/passwordsame",
   wrapper(async (req, res, next) => {
     const { password } = req.body;
-    if (validateUser(req.body).error) {
+    if (validateAdver(req.body).error) {
       // 검증과정 통과 못하면
       res.status(400).json({ result: false });
       next();
@@ -141,7 +141,7 @@ router.post(
     const user = new User({
       password
     });
-    const user = await User.findOne({ id: id });
+    const saveResult = await user.save(); // db에 저장
     res.json({ result: true });
     next();
   })
