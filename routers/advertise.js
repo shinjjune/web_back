@@ -46,9 +46,9 @@ router.post(
     };
 
     const user = await User.find({ id: web_user_id })
-    console.log(user._id);
+    console.log(user);
     const advertise = new Advertise({
-      id: user._id,  // web_user address
+      id: user[0]._id,  // web_user address
       title,
       status,
       totalNumber,
@@ -73,7 +73,7 @@ router.get(
     console.log(web_userId);
     const WEB_USER = await User.find({ id: web_userId });
 
-    const advertises = await Advertise.find({ id: WEB_USER._id });
+    const advertises = await Advertise.find({ id: WEB_USER[0]._id });
     // // advertise.views++;
     // // advertise.save();
     res.json({ advertises });
