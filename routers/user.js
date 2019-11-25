@@ -133,7 +133,7 @@ router.patch(
   wrapper(async (req, res, next) => {
     await user.updateMany({
       $set: {
-        password: password,
+        password: newPassword,
         phonenumber: phonenumber,
         company_name: company_name,
         company_location: company_location
