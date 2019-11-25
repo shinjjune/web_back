@@ -29,6 +29,7 @@ router.post(
       // id,
       title,
       totalNumber,
+      status,
       // currentNumber,
       content,
       survey,
@@ -44,6 +45,7 @@ router.post(
     const advertise = new Advertise({
       // id,
       title,
+      status,
       totalNumber,
       // currentNumber,
       content,

@@ -5,6 +5,7 @@ const { Schema, model } = mongoose;
 const advertiseSchema = new Schema({
   id: { type: mongoose.Types.ObjectId, ref: "User" },
   title: String,
+  status: String,
   totalNumber: String,
   currentNumber: { type: Number, default: 0 },
   content: String,
@@ -20,6 +21,7 @@ function validateAdver(advertise) {
   const schema = Joi.object({
     id: Joi.string(),
     title: Joi.string(),
+    status: Joi.string(),
     totalNumber: Joi.number(),
     currentNumber: Joi.number()
       .integer()
