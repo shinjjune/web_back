@@ -132,17 +132,27 @@ router.post(
   "/passwordsame",
   wrapper(async (req, res, next) => {
     const { password } = req.body;
-    const user = await User.findOne({ password: password });
-    if (!user) {
-      res.json({ result: false });
+    if (validateUser(req.body).error) {
+      // 검증과정 통과 못하면
+      res.status(400).json({ result: false });
       next();
       return;
-    } else {
-      res.json({
-        resutl: true,
-        password
-      });
     }
+    const saltRound = 10;
+    const hashedPW = await bcrypt.hash(password, saltRound);
+    const user = new User({
+      id,
+      password: hashedPW,
+      name,
+      company_no,
+      company_name,
+      company_location,
+      phonenumber,
+      ticket
+    });
+    const saveResult = await user.save(); // db에 저장
+    res.json({ result: true });
+    next();
   })
 );
 module.exports = router;
