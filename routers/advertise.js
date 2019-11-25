@@ -23,7 +23,7 @@ router.get(
 
 // 광고등록
 router.post(
-  "/mission",
+  "/borad",
   wrapper(async (req, res, next) => {
     const {
       // id,
@@ -64,7 +64,7 @@ router.post(
 router.get(
   "/mission_check",
   wrapper(async (req, res, next) => {
-    const advertises = await Advertise.find();
+    const advertises = await Advertise.find({ id: id });
     // advertise.views++;
     // advertise.save();
     res.json({ advertises });
