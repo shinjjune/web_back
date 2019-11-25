@@ -131,11 +131,6 @@ router.patch(
   "/:id",
   auth.authenticate(),
   wrapper(async (req, res, next) => {
-    if (!req.user.id) {
-      res.json({ error: "unauthorized" });
-      next();
-      return;
-    }
     await user.updateOne({ _id: req.params.id }, req.body);
     res.json({ result: true });
     next();
@@ -146,11 +141,6 @@ router.delete(
   "/:id",
   auth.authenticate(),
   wrapper(async (req, res, next) => {
-    if (!req.user.id) {
-      res.json({ error: "unauthorized" });
-      next();
-      return;
-    }
     await user.deleteOne({ _id: req.parmas.id });
     res.json({ result: true });
     next();
