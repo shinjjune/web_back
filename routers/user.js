@@ -31,6 +31,16 @@ router.get(
   })
 );
 
+router.get(
+  "/ps",
+  wrapper(async (req, res, next) => {
+    const password = req.query.password;
+    const users = await User.findOne({ password });
+    res.json({ users });
+    next();
+  })
+);
+
 // 회원가입
 router.post(
   "/join",
