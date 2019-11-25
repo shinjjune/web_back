@@ -138,19 +138,10 @@ router.post(
       next();
       return;
     }
-    const saltRound = 10;
-    const hashedPW = await bcrypt.hash(password, saltRound);
     const user = new User({
-      id,
-      password: hashedPW,
-      name,
-      company_no,
-      company_name,
-      company_location,
-      phonenumber,
-      ticket
+      password
     });
-    const saveResult = await user.save(); // db에 저장
+    const user = await User.findOne({ id: id });
     res.json({ result: true });
     next();
   })
