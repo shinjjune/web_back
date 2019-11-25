@@ -27,7 +27,7 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
-      id,   // web_user ID
+      id: web_user_id,   // web_user ID
       title,
       totalNumber,
       status,
@@ -45,8 +45,8 @@ router.post(
       return;
     };
 
-    const user = await User.find({ id })
-
+    const user = await User.find({ id: web_user_id })
+    console.log(user);
     const advertise = new Advertise({
       id: user._id,  // web_user address
       title,
