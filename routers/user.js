@@ -138,7 +138,7 @@ router.patch(
       next();
       return;
     }
-    const user = await User.updateMany({ _id: req.parmas.id }, req.body);
+    const user = await User.updateOne({ _id: req.parmas.id }, req.body);
     const saveResult = await user.save(); // db에 저장
     res.json({ result: true });
     next();
