@@ -5,7 +5,7 @@ const { Schema, model } = mongoose;
 const advertiseSchema = new Schema({
   id: { type: mongoose.Types.ObjectId, ref: "User" },
   title: String,
-  status: String,
+  status: { type: String, default: 0 },
   totalNumber: String,
   currentNumber: { type: Number, default: 0 },
   content: String,
