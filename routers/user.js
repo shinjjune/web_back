@@ -136,7 +136,7 @@ router.patch(
       next();
       return;
     }
-    await user.updateMany({ _id: req.params.id }, req.body);
+    await user.updateOne({ _id: req.params.id }, req.body);
     res.json({ result: true });
     next();
   })
@@ -151,7 +151,7 @@ router.delete(
       next();
       return;
     }
-    await user.deleteMany({ _id: req.parmas.id });
+    await user.deleteOne({ _id: req.parmas.id });
     res.json({ result: true });
     next();
   })
