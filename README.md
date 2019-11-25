@@ -75,3 +75,11 @@ recaptcha 를 이용한 무분별한 로그인공격 방지
   - company_name
   - companyLocation
   - phoneNumber
+
+- advertises
+  - title
+  - totalNumber
+  - content
+  - survey
+  - startDate
+  - endDate 
