@@ -141,17 +141,7 @@ router.post(
 router.post(
   "/passwordsame",
   wrapper(async (req, res, next) => {
-    const {
-      id,
-      password,
-      ticket,
-      name,
-      company_no,
-      company_name,
-      company_location,
-      phonenumber,
-      ticket
-    } = req.body;
+    const { password } = req.body;
     if (validateAdver(req.body).error) {
       // 검증과정 통과 못하면
       res.status(400).json({ result: false });
@@ -159,14 +149,7 @@ router.post(
       return;
     }
     const user = new User({
-      id,
-      password,
-      name,
-      company_no,
-      company_name,
-      company_location,
-      phonenumber,
-      ticket
+      password
     });
     const saveUser = await user.save(); // db에 저장
     console.log(saveUser);
