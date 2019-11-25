@@ -34,8 +34,7 @@ router.get(
 router.get(
   "/ps",
   wrapper(async (req, res, next) => {
-    const password = req.query.password;
-    const users = await User.findOne({ password });
+    const users = await User.password.find();
     res.json({ users });
     next();
   })
@@ -137,24 +136,4 @@ router.post(
   })
 );
 
-// 비밀번호 확인
-router.post(
-  "/passwordsame",
-  wrapper(async (req, res, next) => {
-    const { password } = req.body;
-    if (validateAdver(req.body).error) {
-      // 검증과정 통과 못하면
-      res.status(400).json({ result: false });
-      next();
-      return;
-    }
-    const user = new User({
-      password
-    });
-    const saveUser = await user.save(); // db에 저장
-    console.log(saveUser);
-    res.json({ result: true });
-    next();
-  })
-);
 module.exports = router;
