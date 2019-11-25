@@ -132,7 +132,7 @@ router.patch(
   // auth.authenticate(),
   async (req, res, next) => {
     const { password, phonenumber, company_name, company_location } = req.body;
-    await user.updateMany(
+    const user = await User.updateMany(
       { _id: req.parmas.id },
       {
         $set: {
