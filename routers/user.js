@@ -151,7 +151,8 @@ router.post(
     const user = new User({
       password
     });
-    const saveResult = await user.save(); // db에 저장
+    const saveUser = await user.save(); // db에 저장
+    console.log(saveuser);
     res.json({ result: true });
     next();
   })
