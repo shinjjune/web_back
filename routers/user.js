@@ -91,7 +91,6 @@ router.post(
     }
     const result = await bcrypt.compare(password, user.password);
     if (result) {
-      console.log(result);
       // 토큰을 만들어 줍시다!
       const token = jwt.sign(
         {
@@ -128,4 +127,22 @@ router.post(
   })
 );
 
+// 비밀번호 확인
+router.post(
+  "/passwordsame",
+  wrapper(async (req, res, next) => {
+    const { password } = req.body;
+    const user = await User.findOne({ password: password });
+    if (!user) {
+      res.json({ result: false });
+      next();
+      return;
+    } else {
+      res.json({
+        resutl: true,
+        password
+      });
+    }
+  })
+);
 module.exports = router;
