@@ -135,7 +135,7 @@ router.patch(
       { _id: req.parmas.id },
       {
         $set: {
-          password: newPassword,
+          password: password,
           phonenumber: phonenumber,
           company_name: company_name,
           company_location: company_location
