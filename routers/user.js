@@ -131,12 +131,16 @@ router.patch(
   "/:id",
   // auth.authenticate(),
   wrapper(async (req, res, next) => {
-    await user.updateOne(
-      { _id: req.params.id },
-      password,
-      phonenumber,
-      company_name,
-      company_location
+    await user.updateMany(
+      { id: id },
+      {
+        $set: {
+          password: password,
+          phonenumber: phonenumber,
+          company_name: company_name,
+          company_location: company_location
+        }
+      }
     );
     res.json({ result: true });
     next();
