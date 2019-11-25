@@ -130,7 +130,7 @@ router.post(
 router.patch(
   "/user",
   // auth.authenticate(),
-  wrapper(async (req, res, next) => {
+  async (req, res, next) => {
     await user.updateMany(
       { _id: req.parmas.id },
       {
@@ -144,17 +144,17 @@ router.patch(
     );
     res.json({ result: true });
     next();
-  })
+  }
 );
 // 회원삭제
-router.delete(
-  "/:id",
-  // auth.authenticate(),
-  wrapper(async (req, res, next) => {
-    await user.deleteOne({ _id: req.parmas.id });
-    res.json({ result: true });
-    next();
-  })
-);
+// router.delete(
+//   "/:id",
+//   // auth.authenticate(),
+//   wrapper(async (req, res, next) => {
+//     await user.deleteOne({ _id: req.parmas.id });
+//     res.json({ result: true });
+//     next();
+//   })
+// );
 
 module.exports = router;
