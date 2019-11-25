@@ -130,8 +130,14 @@ router.post(
 router.patch(
   "/user",
   // auth.authenticate(),
-  async (req, res, next) => {
+  wrapper(async (req, res, next) => {
     const { password, phonenumber, company_name, company_location } = req.body;
+    if (validateUser(req.body).error) {
+      // 검증과정 통과 못하면
+      res.status(400).json({ result: false });
+      next();
+      return;
+    }
     const user = await User.updateMany(
       { _id: req.parmas.id },
       {
@@ -143,9 +149,10 @@ router.patch(
         }
       }
     );
+    const saveResult = await user.save(); // db에 저장
     res.json({ result: true });
     next();
-  }
+  })
 );
 // 회원삭제
 // router.delete(
