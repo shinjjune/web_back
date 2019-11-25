@@ -31,15 +31,6 @@ router.get(
   })
 );
 
-router.get(
-  "/ps",
-  wrapper(async (req, res, next) => {
-    const users = await User.password.find();
-    res.json({ users });
-    next();
-  })
-);
-
 // 회원가입
 router.post(
   "/join",
@@ -133,6 +124,36 @@ router.post(
       res.json({ result: false });
       next();
     }
+  })
+);
+// 회원수정
+router.patch(
+  "/:id",
+  auth.authenticate(),
+  wrapper(async (req, res, next) => {
+    if (!req.user.id) {
+      res.json({ error: "unauthorized" });
+      next();
+      return;
+    }
+    await user.updateMany({ _id: req.params.id }, req.body);
+    res.json({ result: true });
+    next();
+  })
+);
+// 회원삭제
+router.delete(
+  "/:id",
+  auth.authenticate(),
+  wrapper(async (req, res, next) => {
+    if (!req.user.id) {
+      res.json({ error: "unauthorized" });
+      next();
+      return;
+    }
+    await user.deleteMany({ _id: req.parmas.id });
+    res.json({ result: true });
+    next();
   })
 );
 
