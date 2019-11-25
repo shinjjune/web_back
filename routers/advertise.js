@@ -23,7 +23,7 @@ router.get(
 
 // 광고등록
 router.post(
-  "/borad",
+  "/",
   wrapper(async (req, res, next) => {
     const {
       // id,
