@@ -131,14 +131,17 @@ router.patch(
   "/user",
   // auth.authenticate(),
   wrapper(async (req, res, next) => {
-    await user.updateMany({
-      $set: {
-        password: newPassword,
-        phonenumber: phonenumber,
-        company_name: company_name,
-        company_location: company_location
+    await user.updateMany(
+      { _id: req.parmas.id },
+      {
+        $set: {
+          password: newPassword,
+          phonenumber: phonenumber,
+          company_name: company_name,
+          company_location: company_location
+        }
       }
-    });
+    );
     res.json({ result: true });
     next();
   })
