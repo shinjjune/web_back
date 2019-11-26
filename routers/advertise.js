@@ -27,7 +27,11 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
+<<<<<<< HEAD
       id: web_user_id, // web_user ID
+=======
+      id: web_user_id,   // web_user ID
+>>>>>>> 7957db3c0f440f5333e44786ac5f576dac00f557
       title,
       totalNumber,
       status,
@@ -43,12 +47,21 @@ router.post(
       res.status(400).json({ result: false });
       next();
       return;
+<<<<<<< HEAD
     }
 
     const user = await User.find({ id: web_user_id });
     console.log(user);
     const advertise = new Advertise({
       id: user[0]._id, // web_user address
+=======
+    };
+
+    const user = await User.find({ id: web_user_id })
+    console.log(user);
+    const advertise = new Advertise({
+      id: user[0]._id,  // web_user address
+>>>>>>> 7957db3c0f440f5333e44786ac5f576dac00f557
       title,
       status,
       totalNumber,
