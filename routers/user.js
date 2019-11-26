@@ -134,7 +134,7 @@ router.get(
     console.log(web_userId);
     const WEB_USER = await User.find({ id: web_userId });
 
-    const users = await Advertise.find({ id: WEB_USER[0]._id });
+    const users = await User.find({ id: WEB_USER[0]._id });
     // // advertise.views++;
     // // advertise.save();
     res.json({ users });
