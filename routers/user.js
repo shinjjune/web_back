@@ -39,7 +39,6 @@ router.post(
     const {
       id,
       password,
-      newPassword,
       name,
       company_no,
       company_name,
@@ -58,7 +57,6 @@ router.post(
     const user = new User({
       id,
       password: hashedPW,
-      newPassword: hashedPW,
       name,
       company_no,
       company_name,
