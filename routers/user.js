@@ -2,6 +2,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = express.Router();
+const auth = require("../common/auth")();
 const { User, validateUser } = require("../models/user");
 const { jwtSecret } = require("../common/jwt_config");
 const wrapper = require("../common/wrapper");
@@ -127,30 +128,35 @@ router.post(
   })
 );
 
-router.get(
-  "/ticket_check",
-  wrapper(async (req, res, next) => {
-    const web_userId = req.query.id;
-    console.log(web_userId);
-    const WEB_USER = await User.find({ id: web_userId });
+// router.get(
+//   "/ticket_check",
+//   wrapper(async (req, res, next) => {
+//     const web_userId = req.query.id;
+//     console.log(web_userId);
+//     const WEB_USER = await User.find({ id: web_userId });
 
-    const users = await User.find({ id: WEB_USER[0]._id });
-    // // advertise.views++;
-    // // advertise.save();
-    res.json({ users });
-    next();
-  })
-);
+//     const users = await User.find({ id: WEB_USER[0]._id });
+//     // // advertise.views++;
+//     // // advertise.save();
+//     res.json({ users });
+//     next();
+//   })
+// );
 // 회원수정
-router.put(
+router.post(
   "/user",
+  auth.authenticate(),
   wrapper(async (req, res, next) => {
-    await User.updateOne(
-      { _id: req.params.id },
-      req.body
-      // req.body.company_name,
-      // req.body.company_location,
-      // req.body.phonenumber
+    res.user;
+
+    await User.update(
+      { id: req.user.id },
+      {
+        password: req.body.password,
+        company_name: req.body.company_name,
+        company_location: req.body.company_location,
+        phonenumber: req.body.phonenumber
+      }
     );
     res.json({ result: true });
     next();
