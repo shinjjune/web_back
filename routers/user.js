@@ -65,6 +65,7 @@ router.post(
       ticket
     });
     const saveResult = await user.save(); // db에 저장
+    console.log(saveResult);
     res.json({ result: true });
     next();
   })
