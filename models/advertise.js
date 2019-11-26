@@ -4,12 +4,12 @@ const { Schema, model } = mongoose;
 
 const advertiseSchema = new Schema({
   id: { type: mongoose.Types.ObjectId, ref: "User" },
-  title: String,
+  title: { type: String, required: true },
   status: { type: String, default: "waiting" },
   totalNumber: String,
   currentNumber: { type: Number, default: 0 },
-  content: String,
-  survey: String,
+  content: { type: String, required: true },
+  survey: { type: String, required: true },
   date: { type: Date, default: Date.now },
   startDate: Date,
   endDate: Date,

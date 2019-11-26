@@ -130,7 +130,7 @@ router.post(
 router.patch(
   "/user",
   wrapper(async (req, res, next) => {
-    await User.updateOne(
+    await User.updateMany(
       { _id: req.params.id },
       req.body.password,
       req.body.company_name,

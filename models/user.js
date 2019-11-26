@@ -3,14 +3,14 @@ const Joi = require("@hapi/joi");
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema({
-  id: String,
-  password: String,
-  name: String,
-  company_no: String,
-  company_name: String,
-  company_location: String,
-  phonenumber: String,
-  ticket: { type: Number, default: 0 },
+  id: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  name: { type: String, required: true },
+  company_no: { type: String, required: true },
+  company_name: { type: String, required: true },
+  company_location: { type: String, required: true },
+  phonenumber: { type: String, required: true },
+  ticket: { type: Number, default: 0, required: true },
   admin: { type: Boolean, default: false }
 });
 
