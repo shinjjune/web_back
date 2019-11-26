@@ -138,7 +138,7 @@ router.post(
     await User.updateMany(
       { id: req.user.id },
       {
-        password: req.body.password,
+        password: req.body.newPassword,
         company_name: req.body.company_name,
         company_location: req.body.company_location,
         phonenumber: req.body.phonenumber
