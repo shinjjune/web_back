@@ -15,10 +15,8 @@ module.exports = () => {
     if (user) {
       return done(null, {
         id: user.id,
-        password: user.password,
-        company_name: user.company_name,
-        company_location: user.company_location
-        // admin: user.admin
+        name: user.name,
+        admin: user.admin
       });
     } else {
       return done(new Error("user not found"), null);
