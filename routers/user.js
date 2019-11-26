@@ -130,7 +130,13 @@ router.post(
 router.patch(
   "/user",
   wrapper(async (req, res, next) => {
-    await User.updateOne({ _id: req.params.id }, req.body.name);
+    await User.updateOne(
+      { _id: req.params.id },
+      req.body.password,
+      req.body.company_name,
+      req.body.company_location,
+      req.body.phonenumber
+    );
     res.json({ result: true });
     next();
   })
