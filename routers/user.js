@@ -96,12 +96,12 @@ router.post(
       const token = jwt.sign(
         {
           id: user._id,
-          password: user.password,
+          // password: user.password,
           name: user.name,
           company_no: user.company_no,
-          company_name: user.company_name,
-          company_location: user.company_location,
-          phonenumber: user.phonenumber,
+          // company_name: user.company_name,
+          // company_location: user.company_location,
+          // phonenumber: user.phonenumber,
           ticket: user.ticket
         },
         jwtSecret,
@@ -128,20 +128,6 @@ router.post(
   })
 );
 
-// router.get(
-//   "/ticket_check",
-//   wrapper(async (req, res, next) => {
-//     const web_userId = req.query.id;
-//     console.log(web_userId);
-//     const WEB_USER = await User.find({ id: web_userId });
-
-//     const users = await User.find({ id: WEB_USER[0]._id });
-//     // // advertise.views++;
-//     // // advertise.save();
-//     res.json({ users });
-//     next();
-//   })
-// );
 // 회원수정
 router.post(
   "/user",
