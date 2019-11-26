@@ -149,7 +149,7 @@ router.post(
   wrapper(async (req, res, next) => {
     res.user;
 
-    await User.update(
+    await User.updateMany(
       { id: req.user.id },
       {
         password: req.body.password,
