@@ -126,16 +126,31 @@ router.post(
     }
   })
 );
+
+router.get(
+  "/ticket_check",
+  wrapper(async (req, res, next) => {
+    const web_userId = req.query.id;
+    console.log(web_userId);
+    const WEB_USER = await User.find({ id: web_userId });
+
+    const advertises = await Advertise.find({ id: WEB_USER[0]._id });
+    // // advertise.views++;
+    // // advertise.save();
+    res.json({ users });
+    next();
+  })
+);
 // 회원수정
-router.patch(
+router.put(
   "/user",
   wrapper(async (req, res, next) => {
-    await User.updateMany(
+    await User.updateOne(
       { _id: req.params.id },
-      req.body.password,
-      req.body.company_name,
-      req.body.company_location,
-      req.body.phonenumber
+      req.body
+      // req.body.company_name,
+      // req.body.company_location,
+      // req.body.phonenumber
     );
     res.json({ result: true });
     next();
