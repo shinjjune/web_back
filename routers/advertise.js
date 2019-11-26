@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Advertise, validateAdver } = require("../models/advertise");
+const { User } = require("../models/user");
 const wrapper = require("../common/wrapper");
 
 router.get(
@@ -26,7 +27,7 @@ router.post(
   "/mission",
   wrapper(async (req, res, next) => {
     const {
-      // id,
+      id: web_user_id, // web_user ID
       title,
       totalNumber,
       status,
@@ -43,8 +44,11 @@ router.post(
       next();
       return;
     }
+
+    const user = await User.find({ id: web_user_id });
+    console.log(user);
     const advertise = new Advertise({
-      // id,
+      id: user[0]._id, // web_user address
       title,
       status,
       totalNumber,
@@ -56,6 +60,7 @@ router.post(
       endDate
     });
     const saveResult = await advertise.save(); // db에 저장
+    console.log(saveResult);
     res.json({ result: true });
     next();
   })
@@ -64,9 +69,13 @@ router.post(
 router.get(
   "/mission_check",
   wrapper(async (req, res, next) => {
-    const advertises = await Advertise.find();
-    // advertise.views++;
-    // advertise.save();
+    const web_userId = req.query.id;
+    console.log(web_userId);
+    const WEB_USER = await User.find({ id: web_userId });
+
+    const advertises = await Advertise.find({ id: WEB_USER[0]._id });
+    // // advertise.views++;
+    // // advertise.save();
     res.json({ advertises });
     next();
   })

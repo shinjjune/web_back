@@ -132,12 +132,13 @@ router.patch(
   wrapper(async (req, res, next) => {
     const { password, company_name, company_location, phonenumber } = req.body;
     if (validateUser(req.body).error) {
+      console.log(req.body);
       // 검증과정 통과 못하면
       res.status(400).json({ result: false });
       next();
       return;
     }
-    const user = await User.updateOne({ _id: req.parmas.id }, req.body);
+    const user = await User.updateMany({ _id: req.parmas.id }, req.body);
     const saveResult = await user.save(); // db에 저장
     res.json({ result: true });
     next();
